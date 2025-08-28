@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FakeStore - Tienda Online</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-store"></i> FakeStore</h1>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Buscar productos...">
+                <button id="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <div class="header-actions">
+                <button class="cart-btn" id="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Sidebar Filters -->
+            <aside class="sidebar">
+                <div class="filters">
+                    <h2>Filtros</h2>
+                    
+                    <div class="filter-group">
+                        <h3>Categorías</h3>
+                        <select id="category-filter">
+                            <option value="all">Todas las categorías</option>
+                            <option value="electronics">Electrónica</option>
+                            <option value="jewelery">Joyería</option>
+                            <option value="men's clothing">Ropa de hombre</option>
+                            <option value="women's clothing">Ropa de mujer</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Precio máximo</h3>
+                        <div class="price-range">
+                            <span>$<span id="price-value">1000</span></span>
+                            <input type="range" id="price-filter" min="0" max="1000" value="1000">
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Ordenar por</h3>
+                        <select id="sort-by">
+                            <option value="default">Por defecto</option>
+                            <option value="price-asc">Precio: Menor a mayor</option>
+                            <option value="price-desc">Precio: Mayor a menor</option>
+                            <option value="name-asc">Nombre: A-Z</option>
+                            <option value="name-desc">Nombre: Z-A</option>
+                        </select>
+                    </div>
+
+                    <button id="clear-filters" class="btn btn-secondary">
+                        Limpiar filtros
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Products Section -->
+            <section class="products-section">
+                <div class="section-header">
+                    <h2>Productos</h2>
+                    <span class="results-count" id="results-count">0 productos</span>
+                </div>
+
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Cargando productos...</p>
+                </div>
+
+                <div class="products-grid" id="products-grid">
+                    <!-- Los productos se cargarán aquí -->
+                </div>
+
+                <div class="no-products" id="no-products">
+                    <i class="fas fa-search"></i>
+                    <h3>No se encontraron productos</h3>
+                    <p>Intenta ajustar tus filtros de búsqueda</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cart-modal" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Tu Carrito</h2>
+                <button class="close-modal" id="close-cart" aria-label="Cerrar carrito">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="cart-items" id="cart-items">
+                    <!-- Los items del carrito se cargarán aquí -->
+                </div>
+
+                <div class="cart-empty" id="cart-empty">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>Tu carrito está vacío</p>
+                </div>
+
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span>$<span id="cart-total">0.00</span></span>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button id="clear-cart" class="btn btn-danger">
+                    Vaciar Carrito
+                </button>
+                <button id="checkout" class="btn btn-primary">
+                    Comprar
+                </button>
+                <button id="restoreCard" class="btn btn-primary">
+                    Ver compras anteriores
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="modal" id="product-modal" aria-hidden="true">
+        <div class="modal-content product-modal-content">
+            <button class="close-modal" id="close-product-modal" aria-label="Cerrar modal de producto">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="product-detail" id="product-detail">
+                <!-- El contenido del producto se cargará aquí -->
+            </div>
+        </div>
+    </div>
+
+ <!-- Modal de compra exitosa -->
+<div id="success-modal">
+    <div class="success-content">
+      <h2>¡Compra exitosa!</h2>
+      <p>Tu pedido ha sido procesado correctamente 🎉</p>
+      <button id="close-success">Cerrar</button>
+    </div>
+  </div>
+  
+
+    <!-- Scripts -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
